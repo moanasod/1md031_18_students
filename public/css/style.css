@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=sans+serif|Share+Tech+Mono");
+
+body {
+    font-family: Georgia, Verdana, Geneva, sans-serif;
+	font-size:14pt;
+}
+
+header{
+	height: 200px;
+	overflow:hidden;
+}
+
+#headerimg {
+	margin: 10px;
+  	opacity: 0.5;
+	width: 100%;
+	height:auto;
+}
+#headertxt {
+	position: absolute;
+	margin-top: -340px;
+	margin-left: 300px;	
+	opacity: 1;
+}
+#alergen {
+    font-weight: bold;
+}
+#burgers {
+	color: white; 
+    background-color: black;
+	border: 2px dotted white;
+}
+button:hover {
+    background-color: green;
+	cursor: pointer;
+}
+button {
+	margin: 10px;
+}
+table {
+  width: 100%;
+  text-align: center;
+  
+}
+
+.wrapper {
+  display: grid;
+  grid-column-gap: 50px;
+   grid-template-columns: auto auto auto;
+}
+
+.a {
+	grid-columns: 1;
+	grid-rows: 1;
+}
+.b {
+	grid-columns: 2;
+	grid-rows: 1;
+}
+.c {
+	grid-columns: 3;
+	grid-rows: 1;
+}
+	
+#customer_information {
+	
+	border: 2px dotted black;
+}
+
+section {
+	margin: 10px;
+  	padding: 20px;
+}
