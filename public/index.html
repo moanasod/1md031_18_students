@@ -127,8 +127,20 @@
                     <input type="radio" id="undisclosed" name="gender" value="undisclosed" v-model="undisclosed">
                     <label for="undisclosed">Undisclosed</label>
                     </p>
+                    <h1> Click in the map! </h1>
+                    <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                    <div class="view-box">
+                        <div id="dots" v-on:click="addOrder">
+                            <div
+                                v-for="(order, key) in orders"
+                                v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                                {{key}}
+                            </div>
+                        </div>
+                    </div>
+            
+
                 </form>
-            </section> 
             <p>
             <button type="submit" id="subbut" v-on:click="checkedBox(fullname, email, payment, male, female, nonbin, undisclosed)"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
         </p>
@@ -136,7 +148,7 @@
         <h1> Click in the map! </h1>
         <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
         <div class="view-box">
-        <div id="dots" v-on:click="addToOrder">
+        <div id="dots" v-on:click="addOrder">
             <div
                     v-for="(order, key) in orders"
                     v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
@@ -145,6 +157,7 @@
 
         <div id="recievedord">
         </div>
+    </section> 
 
             </main>
         <footer><hr>&copy; 2018  Hypothetical Burgers Inc.</footer>       

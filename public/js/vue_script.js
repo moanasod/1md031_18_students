@@ -1,44 +1,45 @@
 var vm = new Vue({
-  el: '#burgers',
-  data: {
-      food: food,
-      burgers: []
-  }, methods:{
-      getBurgers: function(){
-          return this.burgers;
-      }
-  }
+    el: '#burgers',
+    data: {
+        food: food,
+        burgers: []
+    }, methods: {
+        getBurgers: function () {
+            return this.burgers;
+        }
+    }
 })
 
 
- var socket = io();
+var socket = io();
 
 var vm1 = new Vue({
-  el: '#customer_information',
-  data: {
-    fullname: "",
-    email: "",
-    payment: "",
-    male: "",
-    female: "",
-    nonbin: "",
-    undisclosed: "",
-    recievedord: {},
-  },
-  created: function() {
-    socket.on('initialize', function(data) {
-        this.recievedord = data.recievedord;
-    }.bind(this));
-    socket.on('currentQueue', function(data) {
-        this.recievedord = data.recievedord;
-    }.bind(this));
-},
- methods: {
-  checkedBox: function(name, email, payment, male, female, nonbin, undisclosed) {
-  console.log("Button clicked!");
-  let myElement = document.getElementById("recievedord");
-  console.log(name)
-  let burgers = vm.getBurgers();
+    el: '#customer_information',
+    data: {
+        fullname: '',
+        email: '',
+        payment: '',
+        male: '',
+        female: '',
+        nonbin: '',
+        undisclosed: '',
+        orders: {},
+    },
+    created: function () {
+        socket.on('initialize', function (data) {
+            console.log("socket.on I körs ZZZZZZZZZZZZZZ")
+            this.orders = data.orders;
+        }.bind(this));
+        socket.on('currentQueue', function (data) {
+            console.log("socket.on CC körs ZZZZZZZZZZZZZZ")
+            this.orders = data.orders;
+        }.bind(this));
+    },
+    methods: {
+        checkedBox: function (name, email, payment, male, female, nonbin, undisclosed) {
+            console.log("Button clicked!");
+            let myElement = document.getElementById("recievedord");
+            let burgers = vm.getBurgers();
             let burgerid = document.createElement("p");
             burgerid.appendChild(document.createTextNode(burgers));
             //
@@ -76,19 +77,21 @@ var vm1 = new Vue({
             }
             myElement.appendChild(burgerid);
         },
-        getNext: function() {
+        getNext: function () {
+            console.log("getNext körs");
             //orders eller recievedord
-            let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
+            let lastOrder = Object.keys(this.orders).reduce(function (last, next) {
                 return Math.max(last, next);
             }, 0);
             return lastOrder + 1;
         },
-        addOrder: function(event) {
+        addOrder: function (event) {
             let offset = {
                 x: event.currentTarget.getBoundingClientRect().left,
                 y: event.currentTarget.getBoundingClientRect().top,
             };
-            socket.emit('addToOrder', {
+            console.log("addOrder ZZZZZZZZZZZZZZZZZ");
+            socket.emit('addOrder', {
                 orderId: this.getNext(),
                 details: {
                     x: event.clientX - 10 - offset.x,
@@ -101,4 +104,3 @@ var vm1 = new Vue({
 });
 
 
- 
