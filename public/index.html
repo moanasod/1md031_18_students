@@ -130,30 +130,23 @@
                     <h1> Click in the map! </h1>
                     <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
                     <div class="view-box">
-                        <div id="dots" v-on:click="addOrder">
-                            <div
+                        <div id="dots" v-on:click="updateOrder">
+                            <!-- <div 
                                 v-for="(order, key) in orders"
                                 v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
                                 {{key}}
+                            </div> -->
+                            <div 
+                                v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
+                                T
                             </div>
                         </div>
                     </div>
-            
-
                 </form>
             <p>
             <button type="submit" id="subbut" v-on:click="checkedBox(fullname, email, payment, male, female, nonbin, undisclosed)"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
         </p>
-        <!--
-        <h1> Click in the map! </h1>
-        <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
-        <div class="view-box">
-        <div id="dots" v-on:click="addOrder">
-            <div
-                    v-for="(order, key) in orders"
-                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                {{key}}
-            </div>-->
+        
 
         <div id="recievedord">
         </div>

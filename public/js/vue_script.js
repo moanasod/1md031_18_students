@@ -1,3 +1,13 @@
+Vue.mixin({
+    data: function() {
+      return {
+        mapPositionX:0,
+        mapPositionY:0,
+        mapOffsetX:0,
+      }
+    }
+  })
+
 var vm = new Vue({
     el: '#burgers',
     data: {
@@ -23,7 +33,7 @@ var vm1 = new Vue({
         female: '',
         nonbin: '',
         undisclosed: '',
-        orders: {},
+        orders: {}
     },
     created: function () {
         socket.on('initialize', function (data) {
@@ -40,19 +50,19 @@ var vm1 = new Vue({
             console.log("Button clicked!");
             let myElement = document.getElementById("recievedord");
             let burgers = vm.getBurgers();
-            let burgerid = document.createElement("p");
+            let burgerid = document.createElement('p');
             burgerid.appendChild(document.createTextNode(burgers));
             //
-            let ordertext = document.createElement("p");
+            let ordertext = document.createElement('p');
             ordertext.appendChild(document.createTextNode("confirmation of order:"));
             //
-            let nameid = document.createElement("p");
-            let emailid = document.createElement("p");
-            let checkedid = document.createElement("p");
-            let maleid = document.createElement("p");
-            let femaleid = document.createElement("p");
-            let nonbinid = document.createElement("p");
-            let undisclosedid = document.createElement("p");
+            let nameid = document.createElement('p');
+            let emailid = document.createElement('p');
+            let checkedid = document.createElement('p');
+            let maleid = document.createElement('p');
+            let femaleid = document.createElement('p');
+            let nonbinid = document.createElement('p');
+            let undisclosedid = document.createElement('p');
             nameid.appendChild(document.createTextNode(name));
             emailid.appendChild(document.createTextNode(email));
             checkedid.appendChild(document.createTextNode(payment));
@@ -76,10 +86,24 @@ var vm1 = new Vue({
                 myElement.appendChild(undisclosedid);
             }
             myElement.appendChild(burgerid);
+            this.mapPositionX = event.clientX - 10 - offset.x;
+            this.mapPositionY = event.clientY - 10 - offset.y;
+
+            socket.emit('addOrder', {
+                orderId: this.getNext(),
+                details: {
+                    // x: event.clientX - 10 - offset.x,
+                    // y: event.clientY - 10 - offset.y,
+                    x: this.mapPositionX,
+                    y: this.mapPositionY,
+                },
+                orderItems: ["beans"],
+            });
+
+            console.log("UPDATE ORDER")
         },
         getNext: function () {
             console.log("getNext körs");
-            //orders eller recievedord
             let lastOrder = Object.keys(this.orders).reduce(function (last, next) {
                 return Math.max(last, next);
             }, 0);
@@ -90,16 +114,26 @@ var vm1 = new Vue({
                 x: event.currentTarget.getBoundingClientRect().left,
                 y: event.currentTarget.getBoundingClientRect().top,
             };
-            console.log("addOrder ZZZZZZZZZZZZZZZZZ");
             socket.emit('addOrder', {
                 orderId: this.getNext(),
                 details: {
-                    x: event.clientX - 10 - offset.x,
-                    y: event.clientY - 10 - offset.y,
+                    // x: event.clientX - 10 - offset.x,
+                    // y: event.clientY - 10 - offset.y,
+                    x: this.mapPositionX - 10 - offset.x,
+                    y: this.mapPositionY - 10 - offset.y,
                 },
-                orderItems: ['Beans', 'Curry'],
+                orderItems: ["beans"],
             });
         },
+        updateOrder: function (event) {
+            let offset = {
+                x: event.currentTarget.getBoundingClientRect().left,
+                y: event.currentTarget.getBoundingClientRect().top,
+            };
+            this.mapPositionX = event.clientX - 10 - offset.x;
+            this.mapPositionY = event.clientY - 10 - offset.y;
+            console.log("UPDATE ORDER")
+},
     },
 });
 
