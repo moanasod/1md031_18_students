@@ -3,9 +3,6 @@
     <head>
         <title>DELI-VERY</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="js/js_script.js"></script>
-        <script src="https://vuejs.org/js/vue.js"></script>
-        <script src="js/vue_script.js"></script>
     </head>
 
     <body>
@@ -17,10 +14,35 @@
         </header>
         
         <main>
+            <section id="myID">
+                <div v-for="burger in food">
+                      <h2> {{ burger.name }} </h2>
+  
+                    <img v-bind:src="burger.img" height="280" width="180">
+                            <ul>
+  
+                                <li> {{ burger.kCal }}  </li>
+                                <li> {{ burger.lactose }}  </li>
+                                <li> {{ burger.gluten }}  </li>
+                            </ul>
+  
+                    <p>  <input type="checkbox" v-bind:value="burger.name" v-bind:id="burger.id" v-model="burgers">{{burger.namn}}</p>
+                        </div>
+  
+             </section>
            
-            <section id="burgers">
+           <!-- <section id="burgers">
             <h2>Select burger</h2>
             <p>This is where you execute burger selection</p>
+            
+            <ul id="myyID">
+                <li v-for="burger in burgers" v-if="burger.stock > 0" >
+                   {{ burger.name }}
+                </li>
+           </ul>
+           
+          
+          </div>
             <div class="wrapper">
                 <div class="box a">
                     <h2>The Fire Burger</h2>
@@ -54,6 +76,7 @@
 
             </div>
         </section>
+        -->
 
             <section id="customer_information">
             <h2>Customer information</h2>
@@ -101,9 +124,18 @@
                     <label for="undisclosed">Undisclosed</label>
                     </p>
                 </form>
+                 
+                
+                <div id="myID">
+                    <input v-model="HejMoana">
+                    <h1>{{HejMoana}}xxx</h1>
+                </div>
             </section> 
             <button type="submit"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
         </main>
         <footer><hr>&copy; 2018  Hypothetical Burgers Inc.</footer>       
-    </body>
+        <script src="https://vuejs.org/js/vue.js"></script>
+        <script src="js/vue_script.js"></script>
+        <script src="js/js_script.js"></script>
+</body>
 </html>
