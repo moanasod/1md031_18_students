@@ -2,8 +2,7 @@ Vue.mixin({
     data: function() {
       return {
         mapPositionX:0,
-        mapPositionY:0,
-        mapOffsetX:0,
+        mapPositionY:0
       }
     }
   })
@@ -19,7 +18,6 @@ var vm = new Vue({
         }
     }
 })
-
 
 var socket = io();
 
@@ -86,8 +84,6 @@ var vm1 = new Vue({
                 myElement.appendChild(undisclosedid);
             }
             myElement.appendChild(burgerid);
-            this.mapPositionX = event.clientX - 10 - offset.x;
-            this.mapPositionY = event.clientY - 10 - offset.y;
 
             socket.emit('addOrder', {
                 orderId: this.getNext(),
@@ -99,8 +95,9 @@ var vm1 = new Vue({
                 },
                 orderItems: ["beans"],
             });
-
             console.log("UPDATE ORDER")
+            console.log(this.mapPositionX)
+            console.log(this.mapPositionY)
         },
         getNext: function () {
             console.log("getNext körs");
