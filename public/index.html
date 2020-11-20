@@ -3,6 +3,12 @@
     <head>
         <title>DELI-VERY</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script defer src="/socket.io/socket.io.js"></script>
+        <script defer src="https://vuejs.org/js/vue.js"></script>
+        <script defer src="js/menu.js"></script>
+        <script defer src="js/js_script.js"></script>
+        <script defer src="js/vue_script.js"></script>
+ 
     </head>
 
     <body>
@@ -79,32 +85,28 @@
             <section id="customer_information">
             <h2>Customer information</h2>
             <p>This is where you provide necessary information</p>
-            
                 <h3>Delivery information:</h3>
                 <form>
                     <p>
                         <label for="fullname" >Full name</label><br>
                         <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name" v-model="fullname">
-                      
-
                     </p>
                     <p>
                         <label for="email">E-mail</label><br>
                         <input type="text" id="email" name="em" required="required"
                         placeholder="E-mail address" v-model="email">
                     </p>
-                    
-                    <!--<p>
-                        <label for="street">Street</label><br>
+                    <p>
+                    <!--   <label for="street">Street</label><br>
                         <input type="text" id="street" name="st" required="required"
-                        placeholder="Street name" >
+                        placeholder="Street name" v-model="street">
                     </p>
                     <p>
                         <label for="house">House</label><br>
                         <input type="text" id="house" name="ho" required="required"
-                        placeholder="House number">
-                    </p> -->
-
+                        placeholder="House number" v-model="house">
+                    </p> 
+--> 
                     <p>
                         <label for="payment">Payement options</label><br>
                         <select id="payment" name="pay" v-model="payment">
@@ -126,11 +128,9 @@
                     <label for="undisclosed">Undisclosed</label>
                     </p>
                 </form>
-                 
-        
             </section> 
             <p>
-            <button type="submit" id="subbut" v-on:click="markDone(name, email, payment, male, female, nonbin, undisclosed)"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
+            <button type="submit" id="subbut" v-on:click="checkedBox(fullname, email, payment, male, female, nonbin, undisclosed)"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
         </p>
         <!--
         <h1> Click in the map! </h1>
@@ -144,23 +144,10 @@
             </div>-->
 
         <div id="recievedord">
-            <h3>Order confirmation</h3>
-            <h4>Customer details</h4>
-            <p>Full Name: {{ fullname }} </br>
-               Email: {{ email }} </br>
-               Payment method: {{ payement }} </br>
-               Gender: {{ gender }} 
-            </p>
-            
-
         </div>
-        </main>
 
+            </main>
         <footer><hr>&copy; 2018  Hypothetical Burgers Inc.</footer>       
-        <script src="https://vuejs.org/js/vue.js"></script>
-        <script src="js/menu.js"></script>
-        <script src="js/js_script.js"></script>
-        <script src="js/vue_script.js"></script>
     </div>
 </body>
 </html>
