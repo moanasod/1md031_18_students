@@ -6,6 +6,7 @@
     </head>
 
     <body>
+        <div id="vueAll">
         <header>
             <figure id= "headerimg"> <a href="http://www.google.com/">
                <img src="https://www.tysonfoodservice.com/sites/default/files/2018-06/Restaurant%20Header%20Image_1200x350_2.jpg" alt="header picture of burger assembly" ></a>
@@ -14,20 +15,17 @@
         </header>
         
         <main>
-            <section id="myID">
+            <section id="burgers">
                 <div v-for="burger in food">
-                      <h2> {{ burger.name }} </h2>
-  
-                    <img v-bind:src="burger.img" height="280" width="180">
-                            <ul>
-  
-                                <li> {{ burger.kCal }}  </li>
-                                <li> {{ burger.lactose }}  </li>
-                                <li> {{ burger.gluten }}  </li>
-                            </ul>
-  
-                    <p>  <input type="checkbox" v-bind:value="burger.name" v-bind:id="burger.id" v-model="burgers">{{burger.namn}}</p>
-                        </div>
+                    <h2> {{ burger.name }} </h2>
+                    <img v-bind:src="burger.img" height="180" width="280">
+                    <ul>
+                        <li> {{ burger.kCal }} kCal </li>
+                        <li v-if="burger.lactose" id="lactose">Contains <span id="alergen">lactose</span></li>
+                        <li v-if="burger.gluten" id="gluten">Contains <span id="alergen">gluten</span></li>
+                    </ul>
+                    <p>Add to order:<input type="checkbox" v-bind:value="burger.name" v-bind:id="burger.id" v-model="burgers"></p>
+                </div>
   
              </section>
            
@@ -85,27 +83,31 @@
                 <h3>Delivery information:</h3>
                 <form>
                     <p>
-                        <label for="fullname">Full name</label><br>
-                        <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name">
+                        <label for="fullname" >Full name</label><br>
+                        <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name" v-model="fullname">
+                      
+
                     </p>
                     <p>
                         <label for="email">E-mail</label><br>
                         <input type="text" id="email" name="em" required="required"
-                        placeholder="E-mail address">
+                        placeholder="E-mail address" v-model="email">
                     </p>
-                    <p>
+                    
+                    <!--<p>
                         <label for="street">Street</label><br>
                         <input type="text" id="street" name="st" required="required"
-                        placeholder="Street name">
+                        placeholder="Street name" >
                     </p>
                     <p>
                         <label for="house">House</label><br>
                         <input type="text" id="house" name="ho" required="required"
                         placeholder="House number">
-                    </p>
+                    </p> -->
+
                     <p>
                         <label for="payment">Payement options</label><br>
-                        <select id="payment" name="pay">
+                        <select id="payment" name="pay" v-model="payment">
                             <option>Credit card</option>
                             <option>Cash</option>
                             <option>Tab</option>
@@ -114,28 +116,51 @@
                     </p>
                     <p>
                     Gender<br>
-                    <input type="radio" id="male" name="gender" value="male">
+                    <input type="radio" id="male" name="gender" value="male" v-model="male">
                     <label for="male">Male</label><br>
-                    <input type="radio" id="female" name="gender" value="female">
+                    <input type="radio" id="female" name="gender" value="female" v-model="female">
                     <label for="female">Female</label><br>
-                    <input type="radio" id="non-binary" name="gender" value="non-binary">
+                    <input type="radio" id="non-binary" name="gender" value="non-binary" v-model="nonbin">
                     <label for="non-binary">Non-binary</label><br>
-                    <input type="radio" id="undisclosed" name="gender" value="undisclosed">
+                    <input type="radio" id="undisclosed" name="gender" value="undisclosed" v-model="undisclosed">
                     <label for="undisclosed">Undisclosed</label>
                     </p>
                 </form>
                  
-                
-                <div id="myID">
-                    <input v-model="HejMoana">
-                    <h1>{{HejMoana}}xxx</h1>
-                </div>
+        
             </section> 
-            <button type="submit"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
+            <p>
+            <button type="submit" id="subbut" v-on:click="markDone(name, email, payment, male, female, nonbin, undisclosed)"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
+        </p>
+        <!--
+        <h1> Click in the map! </h1>
+        <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+        <div class="view-box">
+        <div id="dots" v-on:click="addToOrder">
+            <div
+                    v-for="(order, key) in orders"
+                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                {{key}}
+            </div>-->
+
+        <div id="recievedord">
+            <h3>Order confirmation</h3>
+            <h4>Customer details</h4>
+            <p>Full Name: {{ fullname }} </br>
+               Email: {{ email }} </br>
+               Payment method: {{ payement }} </br>
+               Gender: {{ gender }} 
+            </p>
+            
+
+        </div>
         </main>
+
         <footer><hr>&copy; 2018  Hypothetical Burgers Inc.</footer>       
         <script src="https://vuejs.org/js/vue.js"></script>
-        <script src="js/vue_script.js"></script>
+        <script src="js/menu.js"></script>
         <script src="js/js_script.js"></script>
+        <script src="js/vue_script.js"></script>
+    </div>
 </body>
 </html>

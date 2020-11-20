@@ -27,8 +27,10 @@ header{
 }
 #burgers {
 	color: white; 
-    background-color: black;
+  background-color: black;
 	border: 2px dotted white;
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
 }
 button:hover {
     background-color: green;
