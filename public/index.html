@@ -152,16 +152,30 @@
                         src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"
                         height="18" width="28" alt="paper plane">Place my order!</button>
             </p>
+        <div v-if="orderConfirmed" style="white-space: pre">
+            ORDER CONFIRMATION
+            Customer details    
+            Name: {{this.fullname}}
+            Email: {{email}}
+            Delier to: {{mapPositionX}} X / {{mapPositionY}} Y 
+            Payment method: {{payment}}
+            Gender: {{gender}}
 
-
-            <div id="recievedord">
-
-        </section>
-
+            ORDER SUMMARY
+            {{this.burgers}}
+            <!-- AA {{ vm.burgers }} BB
+            <ul id="myyID">
+                <li v-for="burger in vm.burgers"  >
+                    {{burger}}
+                </li>
+            </ul> -->
+        </div>
+        <div id="recievedord">
+        </div>
+    </section>
     </main>
     <footer>
         <hr>&copy; 2018 Hypothetical Burgers Inc.</footer>
-    </div>
 </body>
 
 </html>

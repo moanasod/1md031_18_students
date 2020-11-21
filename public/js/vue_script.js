@@ -31,6 +31,9 @@ var vm1 = new Vue({
         female: '',
         nonbin: '',
         undisclosed: '',
+        gender: '',
+        orderConfirmed: false,
+        burger1: 'b1',
         orders: {}
     },
     created: function () {
@@ -47,46 +50,60 @@ var vm1 = new Vue({
         checkedBox: function (fullname, email, payment, male, female, nonbin, undisclosed) {
             console.log("Button clicked!");
             let myElement = document.getElementById("recievedord");
-            let burgers = vm.getBurgers();
+            console.log("AAA")
+//            console.log(burgers)
             let burgerid = document.createElement('p');
             burgerid.appendChild(document.createTextNode(burgers));
-            //
-            let ordertext = document.createElement('p');
-            ordertext.appendChild(document.createTextNode("confirmation of order:"));
-            //
-            let fullnameid = document.createElement('p');
-            let emailid = document.createElement('p');
-            let paymentid = document.createElement('p');
-            let maleid = document.createElement('p');
-            let femaleid = document.createElement('p');
-            let nonbinid = document.createElement('p');
-            let undisclosedid = document.createElement('p');
-            fullnameid.appendChild(document.createTextNode(fullname));
-            emailid.appendChild(document.createTextNode(email));
-            paymentid.appendChild(document.createTextNode(payment));
-            myElement.appendChild(fullnameid);
-            myElement.appendChild(emailid);
-            myElement.appendChild(paymentid);
-            let genderid = document.createElement('p');
+            // //
+            // let ordertext = document.createElement('p');
+            // ordertext.appendChild(document.createTextNode("confirmation of order:"));
+            // //
+            // let fullnameid = document.createElement('p');
+            // let emailid = document.createElement('p');
+            // let paymentid = document.createElement('p');
+            // let maleid = document.createElement('p');
+            // let femaleid = document.createElement('p');
+            // let nonbinid = document.createElement('p');
+            // let undisclosedid = document.createElement('p');
+            // fullnameid.appendChild(document.createTextNode(fullname));
+            // emailid.appendChild(document.createTextNode(email));
+            // paymentid.appendChild(document.createTextNode(payment));
+            // myElement.appendChild(fullnameid);
+            // myElement.appendChild(emailid);
+            // myElement.appendChild(paymentid);
+            // let genderid = document.createElement('p');
 
-            if (male) {
-                genderid.appendChild(document.createTextNode(male));
-                myElement.appendChild(genderid);
-            }
-            if (female) {
-                genderid.appendChild(document.createTextNode(female));
-                myElement.appendChild(genderid);
-            }
-            if (nonbin) {
-                genderid.appendChild(document.createTextNode(nonbin));
-                myElement.appendChild(genderid);
-            }
-            if (undisclosed) {
-                genderid.appendChild(document.createTextNode(undisclosed));
-                myElement.appendChild(genderid);
-            }
+            // if (male) {
+            //     genderid.appendChild(document.createTextNode(male));
+            //     myElement.appendChild(genderid);
+            // }
+            // if (female) {
+            //     genderid.appendChild(document.createTextNode(female));
+            //     myElement.appendChild(genderid);
+            // }
+            // if (nonbin) {
+            //     genderid.appendChild(document.createTextNode(nonbin));
+            //     myElement.appendChild(genderid);
+            // }
+            // if (undisclosed) {
+            //     genderid.appendChild(document.createTextNode(undisclosed));
+            //     myElement.appendChild(genderid);
+            // }
             myElement.appendChild(burgerid);
-
+            if (this.male) {
+                this.gender = "Male"
+            }
+            if (this.female) {
+                this.gender = "Female"
+            }
+            if (this.nonbin) {
+                this.gender = "Non-binary"
+            }
+            if (this.undisclosed) {
+                this.gender = "Undisclosed"
+            }
+            this.orderConfirmed = true;
+    
             socket.emit('addOrder', {
                 orderId: this.getNext(),
                 details: {
