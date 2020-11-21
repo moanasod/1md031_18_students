@@ -38,24 +38,20 @@ var vm1 = new Vue({
     },
     created: function () {
         socket.on('initialize', function (data) {
-            console.log("socket.on I körs ZZZZZZZZZZZZZZ")
             this.orders = data.orders;
         }.bind(this));
         socket.on('currentQueue', function (data) {
-            console.log("socket.on CC körs ZZZZZZZZZZZZZZ")
             this.orders = data.orders;
         }.bind(this));
     },
     methods: {
-        checkedBox: function (fullname, email, payment, male, female, nonbin, undisclosed) {
+        checkedBox: function (fullname, email, payment, gender) {
             console.log("Button clicked!");
             console.log(vm.burgers)
             this.burgers1 = vm.burgers;
-            let myElement = document.getElementById("recievedord");
-            console.log("AAA")
-//            console.log(burgers)
-            let burgerid = document.createElement('p');
-            burgerid.appendChild(document.createTextNode(burgers));
+            //            console.log(burgers)
+            // let burgerid = document.createElement('p');
+            // burgerid.appendChild(document.createTextNode(burgers));
             // //
             // let ordertext = document.createElement('p');
             // ordertext.appendChild(document.createTextNode("confirmation of order:"));
@@ -91,7 +87,7 @@ var vm1 = new Vue({
             //     genderid.appendChild(document.createTextNode(undisclosed));
             //     myElement.appendChild(genderid);
             // }
-            myElement.appendChild(burgerid);
+            //myElement.appendChild(burgerid);
             if (this.male) {
                 this.gender = "Male"
             }
@@ -105,17 +101,17 @@ var vm1 = new Vue({
                 this.gender = "Undisclosed"
             }
             this.orderConfirmed = true;
-    
+            console.log(this.gender)
+            console.log(gender)
+
             socket.emit('addOrder', {
                 orderId: this.getNext(),
                 details: {
-                    // x: event.clientX - 10 - offset.x,
-                    // y: event.clientY - 10 - offset.y,
                     x: this.mapPositionX,
                     y: this.mapPositionY,
                 },
                 orderItems: this.burgers1,
-                personlData: [fullname, email, payment, male, female, nonbin, undisclosed]
+                personlData: [fullname, email, payment, this.gender]
             });
             console.log("UPDATE ORDER")
             console.log(this.mapPositionX)
@@ -127,22 +123,6 @@ var vm1 = new Vue({
                 return Math.max(last, next);
             }, 0);
             return lastOrder + 1;
-        },
-        addOrder: function (event) {
-            let offset = {
-                x: event.currentTarget.getBoundingClientRect().left,
-                y: event.currentTarget.getBoundingClientRect().top,
-            };
-            socket.emit('addOrder', {
-                orderId: this.getNext(),
-                details: {
-                    // x: event.clientX - 10 - offset.x,
-                    // y: event.clientY - 10 - offset.y,
-                    x: this.mapPositionX - 10 - offset.x,
-                    y: this.mapPositionY - 10 - offset.y,
-                },
-                orderItems: ["beans"],
-            });
         },
         updateOrder: function (event) {
             let offset = {

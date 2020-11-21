@@ -46,7 +46,6 @@ button {
 table {
   width: 100em;
   text-align: center;
-  
 }
 
 .wrapper {
@@ -54,7 +53,6 @@ table {
   grid-column-gap: 50px;
    grid-template-columns: auto auto auto;
 }
-
 .a {
 	grid-columns: 1;
 	grid-rows: 1;
@@ -69,7 +67,6 @@ table {
 }
 	
 #customer_information {
-	
 	border: 2px dotted black;
 }
 
@@ -93,7 +90,6 @@ section {
 	height: 330%;
 	cursor: crosshair;
 }
-
 #dots div {
 	position: absolute;
 	background: blue;

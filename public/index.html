@@ -45,9 +45,7 @@
                 <li v-for="burger in burgers" v-if="burger.stock > 0" >
                    {{ burger.name }}
                 </li>
-           </ul>
-           
-          
+           </ul>         
           </div>
             <div class="wrapper">
                 <div class="box a">
@@ -79,7 +77,6 @@
                             <li>Ccontains <span id="alergen">gluten</span></li>
                             </ul>
                 </div>
-
             </div>
         </section>
         -->
@@ -99,8 +96,8 @@
                     <input type="text" id="email" name="em" required="required" placeholder="E-mail address"
                         v-model="email">
                 </p>
-                <p>
-                    <!--   <label for="street">Street</label><br>
+                <!-- <p>
+                       <label for="street">Street</label><br>
                         <input type="text" id="street" name="st" required="required"
                         placeholder="Street name" v-model="street">
                     </p>
@@ -131,15 +128,10 @@
                     <label for="undisclosed">Undisclosed</label>
                 </p>
                 <p>Indicate point of delivery:</p>
-                <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                <a href="dispatcher.html" target="_blank">Open dispatcher in new window</a>.
                 <div class="view-box">
                     <div id="dots" v-on:click="updateOrder">
-                        <!-- <div 
-                                v-for="(order, key) in orders"
-                                v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                                {{key}}
-                            </div> -->
-                            <div v-if="mapPositionX" v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
+                        <div v-if="mapPositionX" v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
                             T
                         </div>
                     </div>
@@ -151,27 +143,25 @@
                         src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"
                         height="18" width="28" alt="paper plane">Place my order!</button>
             </p>
-        <div v-if="orderConfirmed">
+            <div v-if="orderConfirmed">
 
-        <div style="white-space: pre">
-            <h4>ORDER CONFIRMATION</h4>
-            <h5>Customer details</h5>    
-            Name: {{this.fullname}}
-            Email: {{email}}
-            Delier to: {{mapPositionX}} X / {{mapPositionY}} Y 
-            Payment method: {{payment}}
-            Gender: {{gender}}
-        </div>
-        <h4>ORDER SUMMARY</h4>
-        <ul id="myyID">
-            <li v-for="burger in burgers1"  >
-                {{burger}}
-            </li>
-        </ul>
-    </div>
-    <div id="recievedord">
-        </div>
-    </section>
+                <div style="white-space: pre">
+                    <h4>ORDER CONFIRMATION</h4>
+                    <h5>Customer details</h5>
+                    Name: {{ this.fullname }}
+                    Email: {{ email }}
+                    Delier to: {{ mapPositionX }} X / {{ mapPositionY }} Y
+                    Payment method: {{ payment }}
+                    Gender: {{ gender }}
+                </div>
+                <h4>ORDER SUMMARY</h4>
+                <ul id="myyID">
+                    < li v-for="burger in burgers1">
+                        {{burger}}
+                        </li>
+                </ul>
+            </div>
+        </section>
     </main>
     <footer>
         <hr>&copy; 2018 Hypothetical Burgers Inc.</footer>
