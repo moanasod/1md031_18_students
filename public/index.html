@@ -29,13 +29,12 @@
                 <img v-bind:src="burger.img" height="180" width="280">
                 <ul>
                     <li> {{ burger.kCal }} kCal </li>
-                    <li v-if="burger.lactose" id="lactose">Contains <span id="alergen">lactose</span></li>
-                    <li v-if="burger.gluten" id="gluten">Contains <span id="alergen">gluten</span></li>
+                    <li v-if="burger.lactose" id="lactose">Contains <span class="bold1">lactose</span></li>
+                    <li v-if="burger.gluten" id="gluten">Contains <span class="bold1">gluten</span></li>
                 </ul>
                 <p>Add to order:<input type="checkbox" v-bind:value="burger.name" v-bind:id="burger.id"
                         v-model="burgers"></p>
             </div>
-
         </section>
 
         <!-- <section id="burgers">
@@ -140,7 +139,7 @@
                                 v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
                                 {{key}}
                             </div> -->
-                        <div v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
+                            <div v-if="mapPositionX" v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
                             T
                         </div>
                     </div>
@@ -152,25 +151,25 @@
                         src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"
                         height="18" width="28" alt="paper plane">Place my order!</button>
             </p>
-        <div v-if="orderConfirmed" style="white-space: pre">
-            ORDER CONFIRMATION
-            Customer details    
+        <div v-if="orderConfirmed">
+
+        <div style="white-space: pre">
+            <h4>ORDER CONFIRMATION</h4>
+            <h5>Customer details</h5>    
             Name: {{this.fullname}}
             Email: {{email}}
             Delier to: {{mapPositionX}} X / {{mapPositionY}} Y 
             Payment method: {{payment}}
             Gender: {{gender}}
-
-            ORDER SUMMARY
-            {{this.burgers}}
-            <!-- AA {{ vm.burgers }} BB
-            <ul id="myyID">
-                <li v-for="burger in vm.burgers"  >
-                    {{burger}}
-                </li>
-            </ul> -->
         </div>
-        <div id="recievedord">
+        <h4>ORDER SUMMARY</h4>
+        <ul id="myyID">
+            <li v-for="burger in burgers1"  >
+                {{burger}}
+            </li>
+        </ul>
+    </div>
+    <div id="recievedord">
         </div>
     </section>
     </main>

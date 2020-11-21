@@ -33,7 +33,7 @@ var vm1 = new Vue({
         undisclosed: '',
         gender: '',
         orderConfirmed: false,
-        burger1: 'b1',
+        burgers1: [],
         orders: {}
     },
     created: function () {
@@ -49,6 +49,8 @@ var vm1 = new Vue({
     methods: {
         checkedBox: function (fullname, email, payment, male, female, nonbin, undisclosed) {
             console.log("Button clicked!");
+            console.log(vm.burgers)
+            this.burgers1 = vm.burgers;
             let myElement = document.getElementById("recievedord");
             console.log("AAA")
 //            console.log(burgers)
@@ -112,7 +114,7 @@ var vm1 = new Vue({
                     x: this.mapPositionX,
                     y: this.mapPositionY,
                 },
-                orderItems: [burgers],
+                orderItems: this.burgers1,
                 personlData: [fullname, email, payment, male, female, nonbin, undisclosed]
             });
             console.log("UPDATE ORDER")
