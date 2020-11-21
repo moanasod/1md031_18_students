@@ -1,11 +1,13 @@
+var socket = io();
+
 Vue.mixin({
-    data: function() {
-      return {
-        mapPositionX:0,
-        mapPositionY:0
-      }
+    data: function () {
+        return {
+            mapPositionX: 0,
+            mapPositionY: 0
+        }
     }
-  })
+})
 
 var vm = new Vue({
     el: '#burgers',
@@ -18,8 +20,6 @@ var vm = new Vue({
         }
     }
 })
-
-var socket = io();
 
 var vm1 = new Vue({
     el: '#customer_information',
@@ -44,7 +44,7 @@ var vm1 = new Vue({
         }.bind(this));
     },
     methods: {
-        checkedBox: function (name, email, payment, male, female, nonbin, undisclosed) {
+        checkedBox: function (fullname, email, payment, male, female, nonbin, undisclosed) {
             console.log("Button clicked!");
             let myElement = document.getElementById("recievedord");
             let burgers = vm.getBurgers();
@@ -54,34 +54,36 @@ var vm1 = new Vue({
             let ordertext = document.createElement('p');
             ordertext.appendChild(document.createTextNode("confirmation of order:"));
             //
-            let nameid = document.createElement('p');
+            let fullnameid = document.createElement('p');
             let emailid = document.createElement('p');
-            let checkedid = document.createElement('p');
+            let paymentid = document.createElement('p');
             let maleid = document.createElement('p');
             let femaleid = document.createElement('p');
             let nonbinid = document.createElement('p');
             let undisclosedid = document.createElement('p');
-            nameid.appendChild(document.createTextNode(name));
+            fullnameid.appendChild(document.createTextNode(fullname));
             emailid.appendChild(document.createTextNode(email));
-            checkedid.appendChild(document.createTextNode(payment));
-            myElement.appendChild(nameid);
+            paymentid.appendChild(document.createTextNode(payment));
+            myElement.appendChild(fullnameid);
             myElement.appendChild(emailid);
-            myElement.appendChild(checkedid);
+            myElement.appendChild(paymentid);
+            let genderid = document.createElement('p');
+
             if (male) {
-                maleid.appendChild(document.createTextNode(male));
-                myElement.appendChild(maleid);
+                genderid.appendChild(document.createTextNode(male));
+                myElement.appendChild(genderid);
             }
             if (female) {
-                femaleid.appendChild(document.createTextNode(female));
-                myElement.appendChild(femaleid);
+                genderid.appendChild(document.createTextNode(female));
+                myElement.appendChild(genderid);
             }
             if (nonbin) {
-                nonbinid.appendChild(document.createTextNode(nonbin));
-                myElement.appendChild(nonbinid);
+                genderid.appendChild(document.createTextNode(nonbin));
+                myElement.appendChild(genderid);
             }
             if (undisclosed) {
-                undisclosedid.appendChild(document.createTextNode(undisclosed));
-                myElement.appendChild(undisclosedid);
+                genderid.appendChild(document.createTextNode(undisclosed));
+                myElement.appendChild(genderid);
             }
             myElement.appendChild(burgerid);
 
@@ -93,7 +95,8 @@ var vm1 = new Vue({
                     x: this.mapPositionX,
                     y: this.mapPositionY,
                 },
-                orderItems: ["beans"],
+                orderItems: [burgers],
+                personlData: [fullname, email, payment, male, female, nonbin, undisclosed]
             });
             console.log("UPDATE ORDER")
             console.log(this.mapPositionX)
@@ -130,7 +133,7 @@ var vm1 = new Vue({
             this.mapPositionX = event.clientX - 10 - offset.x;
             this.mapPositionY = event.clientY - 10 - offset.y;
             console.log("UPDATE ORDER")
-},
+        },
     },
 });
 

@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script defer src="/socket.io/socket.io.js"></script>
-        <script defer src="https://vuejs.org/js/vue.js"></script>
-        <script defer src="js/menu.js"></script>
-        <script defer src="js/js_script.js"></script>
-        <script defer src="js/vue_script.js"></script>
- 
-    </head>
 
-    <body>
-        <div id="vueAll">
-        <header>
-            <figure id= "headerimg"> <a href="http://www.google.com/">
-               <img src="https://www.tysonfoodservice.com/sites/default/files/2018-06/Restaurant%20Header%20Image_1200x350_2.jpg" alt="header picture of burger assembly" ></a>
-            </figure>
-            <h1 id="headertxt">Välkommen till BurgerOnline</h1>
-        </header>
-        
-        <main>
-            <section id="burgers">
-                <div v-for="burger in food">
-                    <h2> {{ burger.name }} </h2>
-                    <img v-bind:src="burger.img" height="180" width="280">
-                    <ul>
-                        <li> {{ burger.kCal }} kCal </li>
-                        <li v-if="burger.lactose" id="lactose">Contains <span id="alergen">lactose</span></li>
-                        <li v-if="burger.gluten" id="gluten">Contains <span id="alergen">gluten</span></li>
-                    </ul>
-                    <p>Add to order:<input type="checkbox" v-bind:value="burger.name" v-bind:id="burger.id" v-model="burgers"></p>
-                </div>
-  
-             </section>
-           
-           <!-- <section id="burgers">
+<head>
+    <title>DELI-VERY</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="https://vuejs.org/js/vue.js"></script>
+    <script defer src="js/menu.js"></script>
+    <script defer src="js/js_script.js"></script>
+    <script defer src="js/vue_script.js"></script>
+
+</head>
+
+<body>
+
+    <header>
+        <figure id="headerimg"> <a href="http://www.google.com/">
+                <img src="https://www.tysonfoodservice.com/sites/default/files/2018-06/Restaurant%20Header%20Image_1200x350_2.jpg"
+                    alt="header picture of burger assembly"></a>
+        </figure>
+        <h1 id="headertxt">Välkommen till BurgerOnline</h1>
+    </header>
+
+    <main>
+        <section id="burgers">
+            <div v-for="burger in food">
+                <h2 id="burgertxt"> {{ burger.name }} </h2>
+                <img v-bind:src="burger.img" height="180" width="280">
+                <ul>
+                    <li> {{ burger.kCal }} kCal </li>
+                    <li v-if="burger.lactose" id="lactose">Contains <span id="alergen">lactose</span></li>
+                    <li v-if="burger.gluten" id="gluten">Contains <span id="alergen">gluten</span></li>
+                </ul>
+                <p>Add to order:<input type="checkbox" v-bind:value="burger.name" v-bind:id="burger.id"
+                        v-model="burgers"></p>
+            </div>
+
+        </section>
+
+        <!-- <section id="burgers">
             <h2>Select burger</h2>
             <p>This is where you execute burger selection</p>
             
@@ -60,9 +63,9 @@
                             </ul>
                 </div>
                 <div class="box b">
-                    <h2>Fried Turkey Burger</h2>
+                    <h2>Veggie Burger</h2>
                     <figure> <a href="http://www.google.com/">
-                        <img src="https://assets.bonappetit.com/photos/5a81ce898e5ab504d767ae48/16:9/w_2560%2Cc_limit/juicy-turkey-burgers.jpg" height="180" width="280" alt="The fried turkey burger displayed"></a></figure>
+                        <img src="https://assets.bonappetit.com/photos/5a81ce898e5ab504d767ae48/16:9/w_2560%2Cc_limit/juicy-turkey-burgers.jpg" height="180" width="280" alt="The Veggie burger displayed"></a></figure>
                         <ul>
                             <li>600 kCal</li>
                             <li>Contains <span id="alergen">lactose</span></li>
@@ -82,21 +85,22 @@
         </section>
         -->
 
-            <section id="customer_information">
+        <section id="customer_information">
             <h2>Customer information</h2>
             <p>This is where you provide necessary information</p>
-                <h3>Delivery information:</h3>
-                <form>
-                    <p>
-                        <label for="fullname" >Full name</label><br>
-                        <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name" v-model="fullname">
-                    </p>
-                    <p>
-                        <label for="email">E-mail</label><br>
-                        <input type="text" id="email" name="em" required="required"
-                        placeholder="E-mail address" v-model="email">
-                    </p>
-                    <p>
+            <h3>Delivery information:</h3>
+            <form>
+                <p>
+                    <label for="fullname">Full name</label><br>
+                    <input type="text" id="fullname" name="fn" required="required" placeholder="First- and Last name"
+                        v-model="fullname">
+                </p>
+                <p>
+                    <label for="email">E-mail</label><br>
+                    <input type="text" id="email" name="em" required="required" placeholder="E-mail address"
+                        v-model="email">
+                </p>
+                <p>
                     <!--   <label for="street">Street</label><br>
                         <input type="text" id="street" name="st" required="required"
                         placeholder="Street name" v-model="street">
@@ -106,17 +110,17 @@
                         <input type="text" id="house" name="ho" required="required"
                         placeholder="House number" v-model="house">
                     </p> 
---> 
-                    <p>
-                        <label for="payment">Payement options</label><br>
-                        <select id="payment" name="pay" v-model="payment">
-                            <option>Credit card</option>
-                            <option>Cash</option>
-                            <option>Tab</option>
-                            <option>Swish</option>
-                        </select>
-                    </p>
-                    <p>
+-->
+                <p>
+                    <label for="payment">Payement options</label><br>
+                    <select id="payment" name="pay" v-model="payment">
+                        <option value="credit" selected>Credit card</option>
+                        <option value="cash">Cash</option>
+                        <option value="tab">Tab</option>
+                        <option value="swish">Swish</option>
+                    </select>
+                </p>
+                <p>
                     Gender<br>
                     <input type="radio" id="male" name="gender" value="male" v-model="male">
                     <label for="male">Male</label><br>
@@ -126,34 +130,38 @@
                     <label for="non-binary">Non-binary</label><br>
                     <input type="radio" id="undisclosed" name="gender" value="undisclosed" v-model="undisclosed">
                     <label for="undisclosed">Undisclosed</label>
-                    </p>
-                    <h1> Click in the map! </h1>
-                    <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
-                    <div class="view-box">
-                        <div id="dots" v-on:click="updateOrder">
-                            <!-- <div 
+                </p>
+                <p>Indicate point of delivery:</p>
+                <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                <div class="view-box">
+                    <div id="dots" v-on:click="updateOrder">
+                        <!-- <div 
                                 v-for="(order, key) in orders"
                                 v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
                                 {{key}}
                             </div> -->
-                            <div 
-                                v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
-                                T
-                            </div>
+                        <div v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
+                            T
                         </div>
                     </div>
-                </form>
+                </div>
+            </form>
             <p>
-            <button type="submit" id="subbut" v-on:click="checkedBox(fullname, email, payment, male, female, nonbin, undisclosed)"><img src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"height="18" width="28" alt="paper plane">Place my order!</button> 
-        </p>
-        
+                <button type="submit" id="subbut"
+                    v-on:click="checkedBox(fullname, email, payment, male, female, nonbin, undisclosed)"><img
+                        src="https://i.pinimg.com/236x/19/57/c5/1957c57ac4ebe77731ab7fcc015d5da8--paper-plane-tattoo-adobe-illustrator.jpg"
+                        height="18" width="28" alt="paper plane">Place my order!</button>
+            </p>
 
-        <div id="recievedord">
-        </div>
-    </section> 
 
-            </main>
-        <footer><hr>&copy; 2018  Hypothetical Burgers Inc.</footer>       
+            <div id="recievedord">
+
+        </section>
+
+    </main>
+    <footer>
+        <hr>&copy; 2018 Hypothetical Burgers Inc.</footer>
     </div>
 </body>
+
 </html>

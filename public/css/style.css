@@ -6,24 +6,28 @@ body {
 }
 
 header{
-	height: 200px;
+	height: 13em;
 	overflow:hidden;
 }
 
 #headerimg {
 	margin: 10px;
-  	opacity: 0.5;
-	width: 100%;
+  opacity: 0.5;
+	width: 100em;
 	height:auto;
+	position: relative;
 }
 #headertxt {
 	position: absolute;
 	margin-top: -340px;
-	margin-left: 300px;	
+	margin-left: 250px;	
 	opacity: 1;
 }
 #alergen {
     font-weight: bold;
+}
+#burgertxt {
+		text-align: center;
 }
 #burgers {
 	color: white; 
@@ -40,7 +44,7 @@ button {
 	margin: 10px;
 }
 table {
-  width: 100%;
+  width: 100em;
   text-align: center;
   
 }

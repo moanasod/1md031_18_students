@@ -8,7 +8,7 @@ let food = [
   "id": 'bur1'
   },
   {
-  "name": "Fried Turkey Burger",
+  "name": "Veggie Burger",
   "kCal": 600,
   "lactose": true,
   "gluten": false,
