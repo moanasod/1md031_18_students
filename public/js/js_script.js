@@ -15,7 +15,6 @@
   "img": "https://image.shutterstock.com/image-photo/maxi-hamburger-flying-ingredients-placed-260nw-551235409.jpg",
   "id": 'bur1'
 
-/*let bur1?
 var bur1 = new MenuItem('The Fire Burger', '750 kCal', 'Gluten', 'Lactose');
 
 var bur2 = new MenuItem('Fried Turkey Burger', '600 kCal', 'No gluten', 'Lactose');
@@ -28,7 +27,6 @@ var bur5 = new MenuItem('Veggie', '550 kCal', 'Gluten', 'No lactose');
 */
 /*
 var menu =  [ bur1, bur2, bur3, bur4, bur5];
-
 
 //document.getElementById("myID").innerHTML = "Välj en burgare";
 
@@ -43,12 +41,12 @@ for (burger in burgers)
         myElement.appendChild(listItem);
     }
 }
-
+//won't work since I've changed the HTML code to run with vue exclusively since
 let myButton = document.getElementById('subbut');
 myButton.addEventListener("click", myFunction);
 function myFunction() {
     console.log ("Button clicked!");
-    var fullnameid = document.getElementById("fullname").value;
+    var nameid = document.getElementById("name").value;
     console.log(nameid);
     var emailid = document.getElementById("email").value;
     console.log(emailid);
@@ -75,10 +73,10 @@ function myFunction() {
 
 let myElement = document.getElementById("burgers");
 var i = 0;
-for (i; i < ; i++)
+//for (i in menu)
+for (i; i < 20 ; i++)
 {
     let burgerdiv = document.createElement("div" )
-    let createdName = document.createElement("h3");
     createdName.appendChild(name);
     burgerdiv.appendChild(createdName);
     let name = document.createTextNode(menu[i].name);
@@ -104,62 +102,3 @@ for (i; i < ; i++)
 }
 */
 
-/* 
-let myButton = document.getElementById('subbut');
-myButton.addEventListener("click", myFunction);
-function myFunction() {
-    console.log ("Button clicked!");
-    var nameid = document.getElementById("name").value;
-    console.log(nameid);
-    var emailid = document.getElementById("email").value;
-    console.log(emailid);
-    var streetid = document.getElementById("street").value;
-    console.log(streetid);
-    var houseid = document.getElementById("house").value;
-    console.log(houseid);
-    var paymentid = document.getElementById("payment").value;
-    console.log(paymentid);
-    var checkBox = document.getElementById("male");
-    if(document.getElementById("male").checked){
-        console.log("male");
-    }
-    if(document.getElementById("female").checked){
-        console.log("female");
-    }
-    if(document.getElementById("nonbin").checked){
-        console.log("non-binary");
-    }
-    if(document.getElementById("undisclosed").checked){
-        console.log("undisclosed");
-    }
-
-
-let myElement = document.getElementById("burgers");
-let i = 0;
-for (i in menu)
-{
-    let burgerdiv = document.createElement("div" )
-    let listnamn = document.createElement("h3");
-    let listkCal = document.createElement("li");
-    let listlactose = document.createElement("li");
-    let listgluten = document.createElement("li")
-    let listpris = document.createElement("li");
-    let listimage = document.createElement("p");
-    let name = document.createTextNode(menu[i].name);
-    let kCal = document.createTextNode(menu[i].cal);
-    let lactose = document.createTextNode(menu[i].lactose)
-    let gluten = document.createTextNode(menu[i].gluten)
-    listnamn.appendChild(name);
-    listimage.appendChild(show_image(menu[i].image, 280, 180, menu[i].name))
-    listkCal.appendChild(kCal);
-    listlactose.appendChild(lactose);
-    listgluten.appendChild(gluten);
-    burgerdiv.appendChild(listname);
-    burgerdiv.appendChild(listimage);
-    burgerdiv.appendChild(listkCal);
-    burgerdiv.appendChild(listlactose);
-    burgerdiv.appendChild(listgluten);
-    burgerdiv.appendChild(listpris);
-    myElement.appendChild(burgerdiv);
-}
-*/

@@ -13,15 +13,16 @@ header{
 #headerimg {
 	margin: 10px;
   opacity: 0.5;
-	width: 100em;
+	width: 100%;
 	height:auto;
 	position: relative;
 }
 #headertxt {
 	position: absolute;
 	margin-top: -340px;
-	margin-left: 250px;	
+	margin-left: 350px;	
 	opacity: 1;
+	
 }
 .bold1 {
     font-weight: bold;
@@ -35,6 +36,8 @@ header{
 	border: 2px dotted white;
 	display: grid;
 	grid-template-columns: 33% 33% 33%;
+	text-align: center;
+
 }
 button:hover {
     background-color: green;

@@ -19,7 +19,7 @@
                 <img src="https://www.tysonfoodservice.com/sites/default/files/2018-06/Restaurant%20Header%20Image_1200x350_2.jpg"
                     alt="header picture of burger assembly"></a>
         </figure>
-        <h1 id="headertxt">Välkommen till BurgerOnline</h1>
+        <h1 id="headertxt">Moana's Boisterous Burgers</h1>
     </header>
 
     <main>
@@ -113,10 +113,10 @@
                 <p>
                     <label for="payment">Payement options</label><br>
                     <select id="payment" name="pay" v-model="payment">
-                        <option value="credit" selected>Credit card</option>
-                        <option value="cash">Cash</option>
-                        <option value="tab">Tab</option>
-                        <option value="swish">Swish</option>
+                        <option value="Credit Card" selected>Credit card</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Tab">Tab</option>
+                        <option value="Swish">Swish</option>
                     </select>
                 </p>
                 <p>
@@ -131,14 +131,9 @@
                     <label for="undisclosed">Undisclosed</label>
                 </p>
                 <p>Indicate point of delivery:</p>
-                <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                <a href="dispatcher.html" target="_blank">Open dispatcher in new window</a>.
                 <div class="view-box">
                     <div id="dots" v-on:click="updateOrder">
-                        <!-- <div 
-                                v-for="(order, key) in orders"
-                                v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                                {{key}}
-                            </div> -->
                             <div v-if="mapPositionX" v-bind:style="{ left: mapPositionX + 'px', top: mapPositionY + 'px'}">
                             T
                         </div>
